@@ -1601,7 +1601,7 @@ section {
   margin:auto;
 display: block;
 }
-#loginbtn{
+#loginbtn,.resetpwdbtn{
   background-color: #5fcf80 !important;
   border:none;
   color:#fff ;
@@ -1615,9 +1615,22 @@ display: block;
 
 #logoutlink{
   color:#fff !important;
+  float:right;
+
 }
 
 #logoutlinkt{
   color:#fff !important;
   float:right;
+}
+
+#conpasswordl,#passwordl{
+font-weight: 600 !important;
+
+  margin: 1% !important;
+}
+
+.error{
+  color:red !important;
+  font-weight: 600;
 }

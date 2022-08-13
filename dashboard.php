@@ -3,16 +3,18 @@ session_start();
 if(isset($_SESSION['session_username'])){
 // do nothing
 $session_name=$_SESSION['session_username'];
-$session_id=$_SESSION['session_id'];
+$session_id= $_SESSION['session_id'];
 $sessin_image=$_SESSION['session_image'];
+//echo 'Hello Mr/Miss/Mrs.<h1>'.$session_name.'</h1>';
+
+//echo '<script>alert('.$session_id.')</script>';
+//echo '<script>alert('.$session_id.')</script>';
+
 }
 else{
 
 header('location:login.php');
 }
-
-
-
 
 ?>
 
@@ -26,7 +28,7 @@ header('location:login.php');
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>SCHOOLS</title>
+  <title>DAHBOARD - SCHOOLS</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -76,26 +78,51 @@ include 'header.php';
     <div class="breadcrumbs">
       <div class="container">
         <?php
-echo 'Hello Mr/Miss/Mrs.<h1>'.$session_name.'</h1>';
-
 include 'database.php';
 
-$sql="select * from schools where id='$session_id'";
-$fetchimage=mysqli_query($conn, $sql);
+echo 'Hello,  Mr/Miss/Mrs.<h1>'.$session_name.'</h1>';
+
 
 
 
 
 ?>
 
+<?php
 
+        $query = "select * from schools where id= '$session_id'";
+        $result = mysqli_query($conn, $query);
+ $resultcount=mysqli_num_rows($result);
+ 
 
-        <p>Full Stack Developer.</p><a id="logoutlink" href="logout.php">Logout</a>
+ if($resultcount == 0){
+  echo 'no data ';
+ }
+
+ else{
+  while($fetchimage=mysqli_fetch_array($result)){
+    $image=$fetchimage['imageupload'];
+    $usern=$fetchimage['username'];
+
+ ?>
+    <img src="image/<?php echo $image; ?>">
+<?php
+
+   // echo $usern;
+  }
+ }
+    ?>
+       
+
+        <h2>Welcome to SCHOOLS</h2>
+        <a id="logoutlink" href="editprofile.php">Edit Profile</a><br>
+         <a id="logoutlink" href="resetpassword.php">reset your password here..</a><br> <a id="logoutlink" href="logout.php">Logout</a>
       </div>
-    </div><!-- End Breadcrumbs -->
+    </div>
+    <!-- End Breadcrumbs -->
 
     <!-- ======= Trainers Section ======= -->
-    <section id="trainers" class="trainers">
+ <section id="trainers" class="trainers">
       <div class="container" data-aos="fade-up">
 
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
@@ -125,6 +152,8 @@ $fetchimage=mysqli_query($conn, $sql);
                 <h4>Ramya Munagala</h4>
                 <span>Business Development</span>
                 <p>
+
+
          Business Development for MALtech Solutions.
                 </p>
                 <div class="social">
@@ -159,7 +188,8 @@ $fetchimage=mysqli_query($conn, $sql);
         </div>
 
       </div>
-    </section><!-- End Trainers Section -->
+    </section> -->
+    <!-- End Trainers Section -->
 
     
   </main><!-- End #main -->

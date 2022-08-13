@@ -12,11 +12,13 @@ if(isset($_POST['loginbtn'])){
     $countchecklognameinDB=mysqli_num_rows($checklognameinDB);
 
     if($countchecklognameinDB == 0){
-        echo 'no user details found';
+    echo '<script>alert("no user details found")</script>';
+     
     }
     else{
 
         while($row=mysqli_fetch_array($checklognameinDB)){
+            $regid=$row['id'];          
             $regnam=$row['username'];
             $regpwd=$row['password'];
             $regimage=$row['imageupload'];
@@ -25,20 +27,20 @@ if(isset($_POST['loginbtn'])){
         }
         if($logname == $regnam && $logpassword == $regpwd){
             session_start();
-
+            $_SESSION['session_id']=$regid;
             $_SESSION['session_username']=$regnam;
             $_SESSION['session_image']=$imageupload;
-
             $_SESSION['session_pwd']=$regpwd;
        
-$_SESSION['session_id']=$sessionid;
+
 
 
             echo 'login success';
              header('location:dashboard.php');
         }
         else{
-            echo 'username and password didn;t match ';
+    echo '<script>alert("username and password not matched ..!")</script>';
+      
         }
     }
 }
@@ -106,7 +108,7 @@ include 'header.php';
         <div class="col-md-3"></div>
         <div class="col-md-6">
             
-<form action="" method="post">
+<form action="" method="post" id="loginform">
 <div class="mb-3 mt-3">
     <label for="Username" class="form-label">Name:</label>
     <input type="text" class="form-control" id="loginusername" name="loginusername" placeholder="Enter username">
@@ -150,7 +152,49 @@ include 'footer.php';
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <!-- jQuery cdn link -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- jquery form validation plugin -->
 
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+<script>
+
+
+
+$(document).ready(function() {
+
+    $("#loginform").validate({
+      rules: {
+
+username: {
+    required: true,
+},
+
+password: {
+    required: true
+},
+
+
+},
+messages: {
+username: {
+    required: "*Firstname required*",
+},
+
+
+password: {
+    required: "*Phone number required*",
+  
+},
+
+},
+    });
+  })
+
+  $.validator.addMethod("isValidEMail", function (value) {
+        return value.match(/^[a-zA-Z0-9_\.%\+\-]+@[a-zA-Z0-9\.\-]+\.[a-zA-Z]{2,}$/);
+    });
+  </script>
 </body>
 
 </html>
