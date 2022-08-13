@@ -133,7 +133,7 @@ echo 'Hello,  Mr/Miss/Mrs.<h1>'.$session_name.'</h1>';
                 <h4>Kallu Madhu Kiran</h4>
                 <span>MALtech Solutions</span>
                 <p>
-                 kallu Madhu kiran is founder and CEO of MALtech Solutions.
+                 kallu Madhu kiran is founder and CEO of MALtech Solutions Pvt Ltd.
                 </p>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
