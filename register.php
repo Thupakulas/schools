@@ -7,27 +7,7 @@ if(isset($_POST['registerbtn'])){
     $regemail=$_POST['emailname'];
     $regpassword=$_POST['password'];
     $file=$_FILES['imageupload']['name'];
-    $file_tmp=$_FILES['imageupload']['tmp_name'];
-    $file_ext=strtolower(pathinfo($file ,PATHINFO_EXTENSION));
-    $allowed=['png','jpg','jpeg'];
-    
-    
-    if(in_array($file_ext,$allowed)){
-    
-      $move_file=move_uploaded_file($file_tmp, $path.$file);
-    
-      if($move_file){
-        echo 'file has been successfully uploaded';
-      }
-      else{
-
-      echo '<script>alert("some thing went wrong")</script>';
-
-      }
-    }else{
-      echo '<script>alert("Invalid File extension!")</script>';
-    
-    }
+   
     // $folder = "./image/" . $file;
 //     if(move_uploaded_file($tempname,"image/" .$file)){
 
@@ -56,6 +36,28 @@ if(isset($_POST['registerbtn'])){
       if($register){
          // echo 'reg success';
        //  header('location:login.php');
+
+       $file_tmp=$_FILES['imageupload']['tmp_name'];
+       $file_ext=strtolower(pathinfo($file ,PATHINFO_EXTENSION));
+       $allowed=['png','jpg','jpeg'];
+       
+       
+       if(in_array($file_ext,$allowed)){
+       
+         $move_file=move_uploaded_file($file_tmp, $path.$file);
+       
+         if($move_file){
+           echo 'file has been successfully uploaded';
+         }
+         else{
+   
+         echo '<script>alert("some thing went wrong")</script>';
+   
+         }
+       }else{
+         echo '<script>alert("Invalid File extension!")</script>';
+       
+       }
 
 echo '<script>alert("registered successfully")</script>';
 

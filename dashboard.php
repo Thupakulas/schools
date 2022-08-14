@@ -105,7 +105,7 @@ echo 'Hello,  Mr/Miss/Mrs.<h1>'.$session_name.'</h1>';
     $usern=$fetchimage['username'];
 
  ?>
-    <img src="image/<?php echo $image; ?>">
+    <img class="imageprofile" src="image/<?php echo $image; ?>">
 <?php
 
    // echo $usern;
@@ -125,70 +125,44 @@ echo 'Hello,  Mr/Miss/Mrs.<h1>'.$session_name.'</h1>';
  <section id="trainers" class="trainers">
       <div class="container" data-aos="fade-up">
 
-        <div class="row" data-aos="zoom-in" data-aos-delay="100">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <img src="assets/img/kiranfounder.jpg"  class="img-fluid"  alt="">
-              <div class="member-content">
-                <h4>Kallu Madhu Kiran</h4>
-                <span>MALtech Solutions</span>
-                <p>
-                 kallu Madhu kiran is founder and CEO of MALtech Solutions Pvt Ltd.
-                </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+   <h4>Watch our newly updated videos which helps you to start from scratch and also to upgrade yourself </h4> 
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <img src="https://www.maltech.co/assets/img/Ramya.jpg" class="img-fluid" alt="">
-              <div class="member-content">
-                <h4>Ramya Munagala</h4>
-                <span>Business Development</span>
-                <p>
+<h3>  Expertise in the Industry...</h3>
+<div class='row'>
+<?php
 
 
-         Business Development for MALtech Solutions.
-                </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+include 'database.php';
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="member">
-              <img src="https://www.maltech.co/assets/img/moses.jpg" class="img-fluid" alt="">
-              <div class="member-content">
-                <h4>Moses Alfred</h4>
-                <span>Devops Engineer</span>
-                <p>
-           Devops Engineer for MALtech
-                </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
+$fetchvideo=mysqli_query($conn, "SELECT * FROM videos");
+
+while($row=mysqli_fetch_array($fetchvideo)){
+  $video=$row['video'];
+  $locate=$row['location'];
+
+
+  echo "
+
+  <div class='col-md-3'>
+  <div style='float:left;'> 
+  <video src='".$locate."' controls width='300px' height='200px'></video>
+  <br>
+
+  <span>".$video  ."</span>
+  </div>
+  </div>
+ 
+  ";
+}
+
+?>
+
+<div class='row'>
 
         </div>
 
       </div>
-    </section> -->
+    </section>
     <!-- End Trainers Section -->
 
     

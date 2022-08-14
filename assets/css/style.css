@@ -1601,7 +1601,7 @@ section {
   margin:auto;
 display: block;
 }
-#loginbtn,.resetpwdbtn{
+#loginbtn,.resetpwdbtn, #videobtn{
   background-color: #5fcf80 !important;
   border:none;
   color:#fff ;
@@ -1633,4 +1633,10 @@ font-weight: 600 !important;
 .error{
   color:red !important;
   font-weight: 600;
+}
+
+
+.imageprofile{
+  width:100px;
+  height: 100px;
 }
