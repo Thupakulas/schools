@@ -69,7 +69,7 @@ include 'header.php';
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
       <div class="container">
-        <h2>Trainers</h2>   <a id="logoutlinkt" href="logout.php">Logout</a>
+        <h2>Trainers</h2> 
         <p>Main Pillars of MALtech Solutions Pvt Ltd.</p>
       </div>
     </div><!-- End Breadcrumbs -->

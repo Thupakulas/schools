@@ -79,14 +79,19 @@ include 'header.php';
       <div class="container">
         <?php
 include 'database.php';
+?>
 
+<span>
+
+<h2>Welcome to SCHOOLS</h2>
+<?php
 echo 'Hello,  Mr/Miss/Mrs.<h1>'.$session_name.'</h1>';
 
-
-
-
-
 ?>
+</span>
+<span style="float:right !important; margin-top:-10% !important;">
+
+
 
 <?php
 
@@ -112,11 +117,14 @@ echo 'Hello,  Mr/Miss/Mrs.<h1>'.$session_name.'</h1>';
   }
  }
     ?>
+</span>
        
 
-        <h2>Welcome to SCHOOLS</h2>
-        <a id="logoutlink" href="editprofile.php">Edit Profile</a><br>
-         <a id="logoutlink" href="resetpassword.php">reset your password here..</a><br> <a id="logoutlink" href="logout.php">Logout</a>
+
+
+
+       
+
       </div>
     </div>
     <!-- End Breadcrumbs -->
@@ -186,6 +194,34 @@ include 'footer.php';
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+
+  <script>
+
+$(function() {
+  
+  $('.dropdown > .caption').on('click', function() {
+    $(this).parent().toggleClass('open');
+  });
+  
+  $('.dropdown > .list > .item').on('click', function() {
+    $('.dropdown > .list > .item').removeClass('selected');
+    $(this).addClass('selected').parent().parent().removeClass('open').children('.caption').text( $(this).text() );
+  });
+  
+  $(document).on('keyup', function(evt) {
+    if ( (evt.keyCode || evt.which) === 27 ) {
+      $('.dropdown').removeClass('open');
+    }
+  });
+  
+  $(document).on('click', function(evt) {
+    if ( $(evt.target).closest(".dropdown > .caption").length === 0 ) {
+      $('.dropdown').removeClass('open');
+    }
+  });
+  
+});
+  </script>
 </body>
 
 </html>
